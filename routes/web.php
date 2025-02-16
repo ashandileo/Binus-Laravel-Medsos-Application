@@ -22,20 +22,20 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // User Posts Routes
-Route::resource('posts', PostController::class)->names([
+Route::resource('posts', PostController::class)->middleware(['auth', 'verified'])->names([
     'index' => 'posts.index',
     'show'  => 'posts.show',
     'store' => 'posts.store',
 ]);
 
 // Comment Routes
-Route::resource('comments', CommentController::class)->names([
+Route::resource('comments', CommentController::class)->middleware(['auth', 'verified'])->names([
     'store'   => 'comments.store',
     'destroy' => 'comments.destroy',
 ]);
 
 // Like Routes
-Route::resource('likes', LikeController::class)->names([
+Route::resource('likes', LikeController::class)->middleware(['auth', 'verified'])->names([
     'store'   => 'likes.store',
     'destroy' => 'likes.destroy',
 ]);
