@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -31,6 +32,12 @@ Route::resource('posts', PostController::class)->names([
 Route::resource('comments', CommentController::class)->names([
     'store'   => 'comments.store',
     'destroy' => 'comments.destroy',
+]);
+
+// Like Routes
+Route::resource('likes', LikeController::class)->names([
+    'store'   => 'likes.store',
+    'destroy' => 'likes.destroy',
 ]);
 
 Route::middleware('auth')->group(function () {

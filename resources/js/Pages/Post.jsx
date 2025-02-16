@@ -4,8 +4,6 @@ import HomeLayout from "@/Layouts/HomeLayout";
 import { Head } from "@inertiajs/react";
 
 export default function Home({ posts }) {
-    console.log("posts", posts);
-
     return (
         <HomeLayout>
             <Head title="Post" />

@@ -21,7 +21,12 @@ class PostController extends Controller
             ->withCount('comments') // Count the related comments for each post
             ->withCount('likes')    // Count the related comments for each post
             ->latest()
-            ->get();
+            ->get()->map(function ($post) {
+            // Check if the logged-in user has voted on the post
+            $user_like       = $post->likes->where('user_id', Auth::id())->first();
+            $post->user_like = $user_like ? $user_like : null;
+            return $post;
+        });
 
         // Pass posts to the 'Post' view
         return Inertia::render('Post', [

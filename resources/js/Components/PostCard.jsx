@@ -5,8 +5,10 @@ import {
     CardFooter,
     CardHeader,
 } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useToast } from "@/hooks/use-toast";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Link as LinkIntertia } from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
 import ConditionalWrapper from "./ConditionalWrapper";
 import { Button } from "./ui/button";
 import { Heart, MessageCircle } from "lucide-react";
@@ -14,8 +16,33 @@ import CommentAdd from "./CommentAdd";
 import CommentItem from "./CommentItem";
 
 const PostCard = ({ isDetail = false, post, comments }) => {
-    const { id, user, title, content, image, comments_count, likes_count } =
-        post || {};
+    const { toast } = useToast();
+
+    const {
+        id,
+        user,
+        title,
+        content,
+        image,
+        comments_count,
+        likes_count,
+        user_like,
+    } = post || {};
+
+    const { post: postData, processing } = useForm({
+        postId: id, // Associating the like with the specific post
+    });
+
+    const handleLike = () => {
+        postData(route("likes.store"), {
+            onSuccess: (data) => {
+                console.log("Data", data);
+                toast({
+                    description: "Data updated successfully!",
+                });
+            },
+        });
+    };
 
     return (
         <>
@@ -69,11 +96,18 @@ const PostCard = ({ isDetail = false, post, comments }) => {
                     ) : (
                         <div className="flex items-center gap-4">
                             <div className="flex items-center gap-2">
-                                <LinkIntertia href={`/posts/${id}`}>
-                                    <Button variant="ghost" size="icon">
-                                        <Heart className="w-4 h-4" />
-                                    </Button>
-                                </LinkIntertia>
+                                <Button
+                                    variant="ghost"
+                                    size="icon"
+                                    onClick={handleLike}
+                                    disabled={processing}
+                                >
+                                    <Heart
+                                        className="w-4 h-4"
+                                        color={user_like ? "red" : "black"}
+                                        fill={user_like ? "red" : "white"}
+                                    />
+                                </Button>
                                 <p>{likes_count || 0}</p>
                             </div>
                             <div className="flex items-center gap-2">
