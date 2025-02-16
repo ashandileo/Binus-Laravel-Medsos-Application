@@ -14,7 +14,8 @@ import CommentAdd from "./CommentAdd";
 import CommentItem from "./CommentItem";
 
 const PostCard = ({ isDetail = false, post, comments }) => {
-    const { id, user, title, content, image, comments_count } = post || {};
+    const { id, user, title, content, image, comments_count, likes_count } =
+        post || {};
 
     return (
         <>
@@ -73,7 +74,7 @@ const PostCard = ({ isDetail = false, post, comments }) => {
                                         <Heart className="w-4 h-4" />
                                     </Button>
                                 </LinkIntertia>
-                                <p>{comments_count || 0}</p>
+                                <p>{likes_count || 0}</p>
                             </div>
                             <div className="flex items-center gap-2">
                                 <LinkIntertia href={`/posts/${id}`}>

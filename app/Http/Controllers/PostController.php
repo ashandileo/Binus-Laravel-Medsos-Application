@@ -19,6 +19,7 @@ class PostController extends Controller
         // Fetch posts with user and comment count
         $posts = Post::with('user')
             ->withCount('comments') // Count the related comments for each post
+            ->withCount('likes')    // Count the related comments for each post
             ->latest()
             ->get();
 
