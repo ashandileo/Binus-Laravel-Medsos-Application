@@ -1,7 +1,7 @@
 import PostCard from "@/Components/PostCard";
 import PostCreate from "@/Components/PostCreate";
 import HomeLayout from "@/Layouts/HomeLayout";
-import { usePage } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 
 export default function Home({ posts }) {
     const {
@@ -12,6 +12,7 @@ export default function Home({ posts }) {
 
     return (
         <HomeLayout>
+            <Head title="Post" />
             <div className="flex flex-col justify-center items-center">
                 <div className="max-w-3xl w-full flex flex-col gap-4">
                     <div className="flex justify-between items-center">
