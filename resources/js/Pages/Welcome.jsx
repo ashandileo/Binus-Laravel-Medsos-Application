@@ -6,33 +6,19 @@ import {
     Card,
     CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
 import { Camera } from "lucide-react";
 import { Button } from "@/Components/ui/button";
 
-export default function Welcome({ auth, laravelVersion, phpVersion }) {
+export default function Welcome() {
     const {
         url,
         props: {
             auth: { user },
         },
     } = usePage(); // Get the current URL
-
-    console.log("user", user);
-
-    const handleImageError = () => {
-        document
-            .getElementById("screenshot-container")
-            ?.classList.add("!hidden");
-        document.getElementById("docs-card")?.classList.add("!row-span-1");
-        document
-            .getElementById("docs-card-content")
-            ?.classList.add("!flex-row");
-        document.getElementById("background")?.classList.add("!hidden");
-    };
 
     return (
         <>
