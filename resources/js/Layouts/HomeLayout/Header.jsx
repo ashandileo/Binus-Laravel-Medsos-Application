@@ -89,9 +89,9 @@ const Header = () => {
                             </DropdownMenuContent>
                         </DropdownMenu>
                     ) : (
-                        <Link href="/login">
+                        <LinkIntertia href="/login">
                             <Button variant="ghost">Login</Button>
-                        </Link>
+                        </LinkIntertia>
                     )}
                     <Sheet>
                         <SheetTrigger asChild>
