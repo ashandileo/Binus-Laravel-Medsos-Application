@@ -19,7 +19,7 @@ const CommentAdd = ({ postId }) => {
         formData.append("post_id", data.post_id);
         formData.append("content", data.content);
 
-        post("/comments", {
+        post(route("comments.store"), {
             data: formData,
             onSuccess: () => {
                 reset(); // Reset the form after success

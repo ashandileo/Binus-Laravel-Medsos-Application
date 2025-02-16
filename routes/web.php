@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -24,6 +25,12 @@ Route::resource('posts', PostController::class)->names([
     'index' => 'posts.index',
     'show'  => 'posts.show',
     'store' => 'posts.store',
+]);
+
+// Comment Routes
+Route::resource('comments', CommentController::class)->names([
+    'store'   => 'comments.store',
+    'destroy' => 'comments.destroy',
 ]);
 
 Route::middleware('auth')->group(function () {
