@@ -1,14 +1,10 @@
 import PostCard from "@/Components/PostCard";
 import PostCreate from "@/Components/PostCreate";
 import HomeLayout from "@/Layouts/HomeLayout";
-import { Head, usePage } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
 
 export default function Home({ posts }) {
-    const {
-        props: {
-            auth: { user },
-        },
-    } = usePage(); // Get the current URL
+    console.log("posts", posts);
 
     return (
         <HomeLayout>
@@ -28,26 +24,11 @@ export default function Home({ posts }) {
                         </div>
                         <PostCreate />
                     </div>
-                    <PostCard
-                        post={{
-                            id: 1,
-                            user: {
-                                name: "Ashandi Leonadi",
-                            },
-                            title: "Title",
-                            content: "Content",
-                        }}
-                        isDetail={false}
-                        comments={[
-                            {
-                                id: 1,
-                                user: {
-                                    name: "Ashandi Leonadi",
-                                },
-                                content: "Comment Item",
-                            },
-                        ]}
-                    />
+                    {posts?.length > 0
+                        ? posts?.map((post) => (
+                              <PostCard key={post.id} post={post} />
+                          ))
+                        : ""}
                 </div>
             </div>
         </HomeLayout>

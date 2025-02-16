@@ -8,21 +8,13 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Link as LinkIntertia } from "@inertiajs/react";
 import ConditionalWrapper from "./ConditionalWrapper";
-import { usePage } from "@inertiajs/react";
 import { Button } from "./ui/button";
 import { Heart, MessageCircle } from "lucide-react";
 import CommentAdd from "./CommentAdd";
 import CommentItem from "./CommentItem";
 
 const PostCard = ({ isDetail = false, post, comments }) => {
-    const { id, status, user, title, content, image, comments_count } =
-        post || {};
-
-    const {
-        props: {
-            auth: { user: authUser },
-        },
-    } = usePage(); // Get the current URL
+    const { id, user, title, content, image, comments_count } = post || {};
 
     return (
         <>
