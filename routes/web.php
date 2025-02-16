@@ -23,6 +23,7 @@ Route::get('/dashboard', function () {
 Route::resource('posts', PostController::class)->names([
     'index' => 'posts.index',
     'show'  => 'posts.show',
+    'store' => 'posts.store',
 ]);
 
 Route::middleware('auth')->group(function () {

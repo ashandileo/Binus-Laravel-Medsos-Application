@@ -35,7 +35,7 @@ export default function PostCreate({ isAdmin = false }) {
             formData.append("image", data.image); // Append the image file if it exists
         }
 
-        post(route(isAdmin ? "admin.posts.store" : "user.posts.store"), {
+        post(route("posts.store"), {
             data: formData, // Pass the FormData object
             onSuccess: () => {
                 reset();
