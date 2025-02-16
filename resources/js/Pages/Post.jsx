@@ -1,3 +1,4 @@
+import PostCard from "@/Components/PostCard";
 import PostCreate from "@/Components/PostCreate";
 import HomeLayout from "@/Layouts/HomeLayout";
 import { usePage } from "@inertiajs/react";
@@ -26,10 +27,26 @@ export default function Home({ posts }) {
                         </div>
                         <PostCreate />
                     </div>
-                    {/* {posts?.length > 0 &&
-                        posts?.map((post) => (
-                            <PostCard key={post?.id} post={post} />
-                        ))} */}
+                    <PostCard
+                        post={{
+                            id: 1,
+                            user: {
+                                name: "Ashandi Leonadi",
+                            },
+                            title: "Title",
+                            content: "Content",
+                        }}
+                        isDetail={true}
+                        comments={[
+                            {
+                                id: 1,
+                                user: {
+                                    name: "Ashandi Leonadi",
+                                },
+                                content: "Comment Item",
+                            },
+                        ]}
+                    />
                 </div>
             </div>
         </HomeLayout>
