@@ -1,6 +1,5 @@
-// import PostCard from "@/Components/PostCard";
-// import PostCreate from "@/Components/PostCreate";
 import { Button } from "@/Components/ui/button";
+import HomeLayout from "@/Layouts/HomeLayout";
 import { usePage } from "@inertiajs/react";
 
 export default function Home({ posts }) {
@@ -10,10 +9,5 @@ export default function Home({ posts }) {
         },
     } = usePage(); // Get the current URL
 
-    return (
-        <div>
-            Welcome
-            <Button>Button ShadCN</Button>
-        </div>
-    );
+    return <HomeLayout>Welcome</HomeLayout>;
 }
