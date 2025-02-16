@@ -1,33 +1,13 @@
 import PostCard from "@/Components/PostCard";
-import PostCreate from "@/Components/PostCreate";
 import HomeLayout from "@/Layouts/HomeLayout";
-import { usePage } from "@inertiajs/react";
 
-export default function Home({ posts }) {
-    const {
-        props: {
-            auth: { user },
-        },
-    } = usePage(); // Get the current URL
-
+export default function PostDetail({ post, comments }) {
     return (
         <HomeLayout>
             <div className="flex flex-col justify-center items-center">
                 <div className="max-w-3xl w-full flex flex-col gap-4">
-                    <div className="flex justify-between items-center">
-                        <div>
-                            <p className="text-lg font-medium">
-                                Explore & Share Moments
-                            </p>
-                            <span>
-                                Upload your favorite moments and show
-                                appreciation by liking posts from others. Join
-                                the community and express yourself!
-                            </span>
-                        </div>
-                        <PostCreate />
-                    </div>
                     <PostCard
+                        isDetail
                         post={{
                             id: 1,
                             user: {
@@ -36,7 +16,6 @@ export default function Home({ posts }) {
                             title: "Title",
                             content: "Content",
                         }}
-                        isDetail={false}
                         comments={[
                             {
                                 id: 1,

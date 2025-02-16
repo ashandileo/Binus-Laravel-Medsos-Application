@@ -14,4 +14,16 @@ class PostController extends Controller
     {
         return Inertia::render('Post');
     }
+
+    /**
+     * Display the specified post.
+     *
+     * @param \App\Models\Post $post
+     * @return \Illuminate\Http\Response
+     */
+    public function show()
+    {
+        // Return the post and its comments to the Inertia view
+        return Inertia::render('PostDetail');
+    }
 }
