@@ -21,8 +21,8 @@ Route::get('/dashboard', function () {
 
 // User Posts Routes
 Route::resource('posts', PostController::class)->names([
-    'index' => 'user.posts.index',
-    'show'  => 'user.posts.show',
+    'index' => 'posts.index',
+    'show'  => 'posts.show',
 ]);
 
 Route::middleware('auth')->group(function () {
